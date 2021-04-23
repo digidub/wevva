@@ -13,5 +13,8 @@ domcontrol.submitBtn.onclick = function (e) {
       return resolve(x);
     });
   };
-  getResults(searchTerm).then((result) => console.log(weatherToObject(result)));
+  getResults(searchTerm).then((result) => {
+    const weatherObj = weatherToObject(result);
+    domcontrol.displayData(weatherObj);
+  });
 };
