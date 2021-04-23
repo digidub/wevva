@@ -1,8 +1,21 @@
-async function getWeather(search) {
-  const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=a0f91643f488572be003cc868721e65a`);
-  const weatherData = await response.json();
-  console.log(weatherData);
-  return weatherData;
+// eslint-disable-next-line consistent-return
+function getWeather(search) {
+  return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=a0f91643f488572be003cc868721e65a`)
+    .then((response) => {
+      console.log(response);
+      if (response.ok) {
+        return response.json();
+      }
+      if (response.status === 404) {
+        return Promise.reject(new Error('error 404, city not found'));
+      }
+      return Promise.reject(new Error(response.status));
+    })
+    .then((response) => {
+      console.log(response);
+      return response;
+    })
+    .catch((error) => console.log(error));
 }
 
 // async function getWeatherMap(x, y) {
@@ -14,5 +27,19 @@ async function getWeather(search) {
 // async function getWeatherController() {
 //   await getWeather(search);
 // }
+
+//   try {
+//     const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=a0f91643f488572be003cc868721e65a`);
+//     if (response.ok) {
+//       const weatherData = await response.json();
+//       console.log(weatherData);
+//       return weatherData;
+//     } else if (!response.ok) {
+//       const weatherData = await response.json();
+//       console.log(weatherData);
+//     }
+//   } catch (e) {
+//     console.log(e);
+//   }
 
 export default getWeather;
