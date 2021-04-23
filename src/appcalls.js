@@ -2,7 +2,6 @@
 function getWeather(search) {
   return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=a0f91643f488572be003cc868721e65a`)
     .then((response) => {
-      console.log(response);
       if (response.ok) {
         return response.json();
       }
