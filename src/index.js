@@ -3,14 +3,13 @@ import domcontrol from './domcontrol';
 import ApiCalls from './appcalls';
 import ObjectTemplates from './weatherobject';
 
-domcontrol.submitBtn.onclick = function (e) {
+domcontrol.submitBtn.onclick = function searchButton(e) {
   e.preventDefault();
   const searchTerm = domcontrol.searchTerm.value;
-
-  const getResults = function (search) {
-    domcontrol.loader();
+  domcontrol.loader();
+  function getResults(search) {
     return ApiCalls.getWeather(search);
-  };
+  }
   getResults(searchTerm)
     .then((result) => {
       const weatherObj = ObjectTemplates.dataExtractor(result);
