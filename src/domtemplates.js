@@ -7,6 +7,11 @@ const templates = (() => {
     children: [
       {
         tag: 'div',
+        classes: ['weather-time'],
+        content: format(new Date(fromUnixTime(obj.time)), 'E do MMM'),
+      },
+      {
+        tag: 'div',
         classes: ['weather-icon'],
         children: [
           {
@@ -19,11 +24,6 @@ const templates = (() => {
         tag: 'div',
         classes: ['weather-desc'],
         content: obj.desc,
-      },
-      {
-        tag: 'div',
-        classes: ['weather-time'],
-        content: format(new Date(fromUnixTime(obj.time)), 'do MMM yyyy'),
       },
       {
         tag: 'div',
