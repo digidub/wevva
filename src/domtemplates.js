@@ -1,3 +1,5 @@
+import { fromUnixTime, format } from 'date-fns';
+
 const templates = (() => {
   const weatherCard = (obj) => ({
     tag: 'div',
@@ -21,7 +23,7 @@ const templates = (() => {
       {
         tag: 'div',
         classes: ['weather-time'],
-        content: obj.time,
+        content: format(new Date(fromUnixTime(obj.time)), 'do MMM yyyy'),
       },
       {
         tag: 'div',
