@@ -1,17 +1,17 @@
-import { fromUnixTime, format } from 'date-fns';
 import ObjectToDOM from 'object2dom';
 // import celsiusFarenheit from './ctof';
 import templates from './domtemplates';
+import ObjectTemplates from './weatherobject';
 
 const domcontrol = (() => {
   // DOM identifiers
   const searchTerm = document.querySelector('.search');
   const submitBtn = document.querySelector('.submit');
   const cityNameDiv = document.querySelector('.city-name');
-  const weatherIconDiv = document.querySelector('.weather-icon');
-  const weatherDescriptionDiv = document.querySelector('.weather-desc');
-  const temperatureDiv = document.querySelector('.temperature');
-  const timeDiv = document.querySelector('.weather-time');
+  // const weatherIconDiv = document.querySelector('.weather-icon');
+  // const weatherDescriptionDiv = document.querySelector('.weather-desc');
+  // const temperatureDiv = document.querySelector('.temperature');
+  // const timeDiv = document.querySelector('.weather-time');
   const sevenDayPanel = document.querySelector('.seven-day-panel');
 
   const makeCard = (obj) => {
@@ -24,6 +24,15 @@ const domcontrol = (() => {
     sevenDayPanel.appendChild(domElement);
   };
 
+  const cardController = (data) => {
+    sevenDayPanel.innerHTML = '';
+    data.daily.forEach((day) => {
+      const z = ObjectTemplates.dataExtractor(day);
+      const card = makeCard(z);
+      displayCards(card);
+    });
+  };
+
   const displayData = (obj) => {
     cityNameDiv.innerText = `${obj.city}, ${obj.country}`;
     // const weatherIcon = new Image();
@@ -32,7 +41,7 @@ const domcontrol = (() => {
     // weatherIconDiv.appendChild(weatherIcon);
     // temperatureDiv.innerText = obj.temp;
     // const correctTime = fromUnixTime(obj.time);
-    // timeDiv.innerText = format(new Date(correctTime), 'do MMM yyyy');
+    // timeDiv.innerText = format(new Date(fromUnixTime(obj.time)), 'do MMM yyyy');
     // weatherDescriptionDiv.innerText = obj.desc;
   };
 
@@ -46,6 +55,7 @@ const domcontrol = (() => {
     displayData,
     makeCard,
     displayCards,
+    cardController,
   };
 })();
 
