@@ -1,7 +1,7 @@
 import './style.css';
-import getWeather from './appcalls';
 import domcontrol from './domcontrol';
-import weatherToObject from './weatherobject';
+import ApiCalls from './appcalls';
+import ObjectTemplates from './weatherobject';
 
 domcontrol.submitBtn.onclick = function (e) {
   e.preventDefault();
@@ -9,12 +9,20 @@ domcontrol.submitBtn.onclick = function (e) {
 
   const getResults = function (search) {
     return new Promise((resolve, reject) => {
-      const x = getWeather(search);
+      const x = ApiCalls.getWeather(search);
       return resolve(x);
     });
   };
-  getResults(searchTerm).then((result) => {
-    const weatherObj = weatherToObject(result);
-    domcontrol.displayData(weatherObj);
-  });
+  getResults(searchTerm)
+    .then((result) => {
+      const weatherObj = ObjectTemplates.dataExtractor(result);
+      domcontrol.displayData(weatherObj);
+      return new Promise((resolve, reject) => {
+        const y = ApiCalls.getWeatherForecast(result.coord.lat, result.coord.lon);
+        return resolve(y);
+      });
+    })
+    .then((result) => {
+      console.log(result);
+    });
 };
