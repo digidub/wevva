@@ -23,6 +23,11 @@ domcontrol.submitBtn.onclick = function (e) {
       });
     })
     .then((result) => {
-      console.log(result);
+      console.log(result.daily);
+      result.daily.forEach((day) => {
+        const z = ObjectTemplates.dataExtractor(day);
+        const card = domcontrol.makeCard(z);
+        domcontrol.displayCards(card);
+      });
     });
 };
