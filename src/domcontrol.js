@@ -33,6 +33,10 @@ const domcontrol = (() => {
     });
   };
 
+  const loader = () => {
+    sevenDayPanel.innerText = 'loading results...';
+  };
+
   const displayData = (obj) => {
     cityNameDiv.innerText = `${obj.city}, ${obj.country}`;
     // const weatherIcon = new Image();
@@ -56,6 +60,7 @@ const domcontrol = (() => {
     makeCard,
     displayCards,
     cardController,
+    loader,
   };
 })();
 
