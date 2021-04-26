@@ -9,19 +9,13 @@ domcontrol.submitBtn.onclick = function (e) {
 
   const getResults = function (search) {
     domcontrol.loader();
-    return new Promise((resolve) => {
-      const x = ApiCalls.getWeather(search);
-      return resolve(x);
-    });
+    return ApiCalls.getWeather(search);
   };
   getResults(searchTerm)
     .then((result) => {
       const weatherObj = ObjectTemplates.dataExtractor(result);
       domcontrol.displayData(weatherObj);
-      return new Promise((resolve) => {
-        const y = ApiCalls.getWeatherForecast(result.coord.lat, result.coord.lon);
-        return resolve(y);
-      });
+      return ApiCalls.getWeatherForecast(result.coord.lat, result.coord.lon);
     })
     .then((result) => {
       domcontrol.cardController(result);
