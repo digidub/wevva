@@ -1,5 +1,36 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.city-name,
+.weather-results {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .seven-day-panel {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-self: center;
+}
+
+.weather-card {
+  padding: 1px 20px 1px 20px;
+  border-right: 1px solid lightgrey;
 }
