@@ -8,6 +8,7 @@ domcontrol.submitBtn.onclick = function (e) {
   const searchTerm = domcontrol.searchTerm.value;
 
   const getResults = function (search) {
+    domcontrol.loader();
     return new Promise((resolve) => {
       const x = ApiCalls.getWeather(search);
       return resolve(x);
