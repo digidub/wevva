@@ -7,7 +7,7 @@ const domcontrol = (() => {
   // DOM identifiers
   const searchTerm = document.querySelector('.search');
   const submitBtn = document.querySelector('.submit');
-  const cityNameDiv = document.querySelector('.city-name');
+  const cityNameDiv = document.querySelector('.city-title');
   // const weatherIconDiv = document.querySelector('.weather-icon');
   // const weatherDescriptionDiv = document.querySelector('.weather-desc');
   // const temperatureDiv = document.querySelector('.temperature');
