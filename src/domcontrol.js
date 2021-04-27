@@ -29,8 +29,13 @@ const domcontrol = (() => {
     });
   };
 
+  const longLoader = () => {
+    sevenDayPanel.innerText = 'This is taking longer than usual. Check your network settings';
+  };
+
   const loader = () => {
     sevenDayPanel.innerText = 'loading results...';
+    setTimeout(longLoader, 4000);
   };
 
   const displayCity = (obj) => {
