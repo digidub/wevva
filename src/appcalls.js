@@ -50,7 +50,7 @@ const ApiCalls = (() => {
           }),
           new TileLayer({
             source: new XYZ({
-              url: 'https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=a0f91643f488572be003cc868721e65a',
+              url: 'https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=a0f91643f488572be003cc868721e65a',
             }),
           }),
         ],
