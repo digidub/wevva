@@ -7,8 +7,8 @@ const ObjectTemplates = (() => {
     if (data.main?.temp) obj.temp = data.main.temp;
     if (data.temp?.max) obj.max = data.temp.max;
     if (data.temp?.min) obj.min = data.temp.min;
-    if (data.weather[0].icon) obj.icon = data.weather[0].icon;
-    if (data.weather[0].description) obj.desc = data.weather[0].description;
+    if (data.weather[0]?.icon) obj.icon = data.weather[0].icon;
+    if (data.weather[0]?.description) obj.desc = data.weather[0].description;
     return obj;
   }
 
