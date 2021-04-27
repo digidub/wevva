@@ -1,5 +1,4 @@
 import ObjectToDOM from 'object2dom';
-// import celsiusFarenheit from './ctof';
 import templates from './domtemplates';
 import ObjectTemplates from './weatherobject';
 
@@ -30,7 +29,7 @@ const domcontrol = (() => {
   };
 
   const longLoader = () => {
-    sevenDayPanel.innerText = 'This is taking longer than usual. Check your network settings';
+    if (sevenDayPanel.innerText === 'loading results...') sevenDayPanel.innerText = 'This is taking longer than usual. Check your network settings';
   };
 
   const loader = () => {
@@ -45,10 +44,6 @@ const domcontrol = (() => {
   const error = () => {
     sevenDayPanel.innerText = 'Please enter a place name for weather results';
   };
-
-  // const tempDisplay = () => {
-  //   celsiusFarenheit;
-  // };
 
   return {
     searchTerm,
