@@ -11,7 +11,7 @@ domcontrol.submitBtn.onclick = function searchButton(e) {
   e.preventDefault();
   const searchTerm = domcontrol.searchTerm.value;
   if (searchTerm === '') {
-    domcontrol.error();
+    domcontrol.noTextError();
     return;
   }
   domcontrol.loader();
@@ -28,5 +28,5 @@ domcontrol.submitBtn.onclick = function searchButton(e) {
     .then((result) => {
       domcontrol.cardController(result);
     })
-    .catch((error) => console.log(error));
+    .catch((error) => domcontrol.noNameError(error));
 };
