@@ -29,20 +29,24 @@ const domcontrol = (() => {
   };
 
   const longLoader = () => {
-    if (sevenDayPanel.innerText === 'loading results...') sevenDayPanel.innerText = 'This is taking longer than usual. Check your network settings';
+    if (sevenDayPanel.innerText === 'loading results...') sevenDayPanel.innerText = 'This is taking longer than usual. Check your network settings.';
   };
 
   const loader = () => {
     sevenDayPanel.innerText = 'loading results...';
-    setTimeout(longLoader, 4000);
+    setTimeout(longLoader, 5000);
   };
 
   const displayCity = (obj) => {
     cityNameDiv.innerText = `${obj.city}, ${obj.country}`;
   };
 
-  const error = () => {
-    sevenDayPanel.innerText = 'Please enter a place name for weather results';
+  const noTextError = () => {
+    sevenDayPanel.innerText = 'Please enter a place name for a weather forecast.';
+  };
+
+  const noNameError = (msg) => {
+    sevenDayPanel.innerText = `${msg}. Please try again.`;
   };
 
   return {
@@ -53,7 +57,8 @@ const domcontrol = (() => {
     displayCards,
     cardController,
     loader,
-    error,
+    noTextError,
+    noNameError,
   };
 })();
 
