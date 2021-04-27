@@ -10,7 +10,7 @@ const ApiCalls = (() => {
   let map;
 
   function getWeather(search) {
-    return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=a0f91643f488572be003cc868721e65a`)
+    return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=a0f91643f488572be003cc868721e65a`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -24,7 +24,7 @@ const ApiCalls = (() => {
   }
 
   function getWeatherForecast(lat, lon) {
-    return fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=a0f91643f488572be003cc868721e65a`)
+    return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=a0f91643f488572be003cc868721e65a`)
       .then((response) => {
         if (response.ok) {
           return response.json();
