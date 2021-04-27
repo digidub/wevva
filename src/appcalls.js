@@ -20,8 +20,7 @@ const ApiCalls = (() => {
         }
         return Promise.reject(new Error(response.status));
       })
-      .then((response) => response)
-      .catch((error) => console.log(error));
+      .then((response) => response);
   }
 
   function getWeatherForecast(lat, lon) {
@@ -35,8 +34,7 @@ const ApiCalls = (() => {
         }
         return Promise.reject(new Error(response.status));
       })
-      .then((response) => response)
-      .catch((error) => console.log(error));
+      .then((response) => response);
   }
 
   function initiateMap(lat, lon) {

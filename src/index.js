@@ -27,5 +27,6 @@ domcontrol.submitBtn.onclick = function searchButton(e) {
     })
     .then((result) => {
       domcontrol.cardController(result);
-    });
+    })
+    .catch((error) => console.log(error));
 };
