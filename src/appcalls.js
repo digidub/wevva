@@ -18,10 +18,7 @@ const ApiCalls = (() => {
         }
         return Promise.reject(new Error(response.status));
       })
-      .then((response) => {
-        console.log(response);
-        return response;
-      })
+      .then((response) => response)
       .catch((error) => console.log(error));
   }
 
@@ -36,10 +33,7 @@ const ApiCalls = (() => {
         }
         return Promise.reject(new Error(response.status));
       })
-      .then((response) => {
-        console.log(response);
-        return response;
-      })
+      .then((response) => response)
       .catch((error) => console.log(error));
   }
 
