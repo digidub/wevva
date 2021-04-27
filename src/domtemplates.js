@@ -28,12 +28,12 @@ const templates = (() => {
       {
         tag: 'div',
         classes: ['weather-temp-max'],
-        content: obj.max,
+        content: `${obj.max}°C`,
       },
       {
         tag: 'div',
         classes: ['weather-temp-min'],
-        content: obj.min,
+        content: `${obj.min}°C`,
       },
     ],
   });
