@@ -7,6 +7,8 @@ import { fromLonLat } from 'ol/proj';
 import XYZ from 'ol/source/XYZ';
 
 const ApiCalls = (() => {
+  let map;
+
   function getWeather(search) {
     return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=a0f91643f488572be003cc868721e65a`)
       .then((response) => {
@@ -38,25 +40,29 @@ const ApiCalls = (() => {
   }
 
   function initiateMap(lat, lon) {
-    const map = new Map({
-      target: 'map',
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-        new TileLayer({
-          source: new XYZ({
-            url: 'https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=a0f91643f488572be003cc868721e65a',
+    if (map === undefined) {
+      map = new Map({
+        pixelRatio: 1,
+        target: 'map',
+        layers: [
+          new TileLayer({
+            source: new OSM(),
           }),
+          new TileLayer({
+            source: new XYZ({
+              url: 'https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=a0f91643f488572be003cc868721e65a',
+            }),
+          }),
+        ],
+        view: new View({
+          center: fromLonLat([lat, lon]),
+          zoom: 2,
         }),
-      ],
-      view: new View({
-        center: fromLonLat([lon, lat]),
-        zoom: 8,
-      }),
-    });
-    console.log(map);
-    // map.render();
+      });
+    } else {
+      map.getView().setCenter(fromLonLat([lon, lat]));
+      map.getView().setZoom(8);
+    }
   }
 
   return {
