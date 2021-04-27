@@ -8,10 +8,6 @@ const domcontrol = (() => {
   const searchTerm = document.querySelector('.search');
   const submitBtn = document.querySelector('.submit');
   const cityNameDiv = document.querySelector('.city-title');
-  // const weatherIconDiv = document.querySelector('.weather-icon');
-  // const weatherDescriptionDiv = document.querySelector('.weather-desc');
-  // const temperatureDiv = document.querySelector('.temperature');
-  // const timeDiv = document.querySelector('.weather-time');
   const sevenDayPanel = document.querySelector('.seven-day-panel');
 
   const makeCard = (obj) => {
@@ -37,16 +33,12 @@ const domcontrol = (() => {
     sevenDayPanel.innerText = 'loading results...';
   };
 
-  const displayData = (obj) => {
+  const displayCity = (obj) => {
     cityNameDiv.innerText = `${obj.city}, ${obj.country}`;
-    // const weatherIcon = new Image();
-    // weatherIcon.src = `http://openweathermap.org/img/wn/${obj.icon}@2x.png`;
-    // weatherIconDiv.innerText = '';
-    // weatherIconDiv.appendChild(weatherIcon);
-    // temperatureDiv.innerText = obj.temp;
-    // const correctTime = fromUnixTime(obj.time);
-    // timeDiv.innerText = format(new Date(fromUnixTime(obj.time)), 'do MMM yyyy');
-    // weatherDescriptionDiv.innerText = obj.desc;
+  };
+
+  const error = () => {
+    sevenDayPanel.innerText = 'Please enter a place name for weather results';
   };
 
   // const tempDisplay = () => {
@@ -56,11 +48,12 @@ const domcontrol = (() => {
   return {
     searchTerm,
     submitBtn,
-    displayData,
+    displayCity,
     makeCard,
     displayCards,
     cardController,
     loader,
+    error,
   };
 })();
 
